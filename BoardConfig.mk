@@ -39,29 +39,33 @@ BOARD_KERNEL_NEW_PPPOX := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := supersonic
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
 
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun%d/file
 
 # # cat /proc/mtd
 # dev:    size   erasesize  name
 # mtd0: 00c00000 00020000 "wimax"
 # mtd1: 000a0000 00020000 "misc"
-# mtd2: 00500000 00020000 "recovery"
-# mtd3: 00280000 00020000 "boot"
+# mtd2: 00480000 00020000 "recovery"
+# mtd3: 00300000 00020000 "boot"
 # mtd4: 15e00000 00020000 "system"
-# mtd5: 09f00000 00020000 "cache"
+# mtd5: 0a000000 00020000 "cache"
 # mtd6: 1aba0000 00020000 "userdata"
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00280000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00500000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x15e00000   # limited so we enforce room to grow
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x1aba0000
+BOARD_BOOTIMAGE_PARTITION_SIZE := 3145728
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 4718592
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 367001600   # limited so we enforce room to grow
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 448397312
+
 BOARD_FLASH_BLOCK_SIZE := 131072
 
+#TARGET_KERNEL_CONFIG    := evervolv_supersonic_defconfig
 
-TARGET_KERNEL_CONFIG    := evervolv_supersonic_defconfig
+# TWRP specific build flags
+DEVICE_RESOLUTION := 480x800
+TARGET_RECOVERY_PIXEL_FORMAT := "BGR_565"
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_MAX_BRIGHTNESS := 255
+TARGET_PREBUILT_KERNEL := device/htc/supersonic/kernel
+TW_CHARGING_LED_PATH := /sys/class/leds/amber/brightness
+TW_CHARGED_LED_PATH := /sys/class/leds/green/brightness
 
-TARGET_RECOVERY_FSTAB := device/htc/supersonic/prebuilt/root/fstab.supersonic
-
-# Defunct
-#BOARD_HAS_NO_SELECT_BUTTON := 1
-#TARGET_RECOVERY_UI_LIB := librecovery_ui_supersonic librecovery_ui_htc
-#BOARD_HAVE_SQN_WIMAX := true
+BOARD_CUSTOM_BOOTIMG_MK := device/htc/supersonic/custombootimg.mk
