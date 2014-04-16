@@ -62,8 +62,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # TWRP specific build flags
 DEVICE_RESOLUTION := 480x800
 TARGET_RECOVERY_PIXEL_FORMAT := "BGR_565"
-TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
-TW_MAX_BRIGHTNESS := 255
 TARGET_PREBUILT_KERNEL := device/htc/supersonic/kernel
 TW_CHARGING_LED_PATH := /sys/class/leds/amber/brightness
 TW_CHARGED_LED_PATH := /sys/class/leds/green/brightness
