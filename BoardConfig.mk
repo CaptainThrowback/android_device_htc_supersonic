@@ -63,7 +63,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 DEVICE_RESOLUTION := 480x800
 TARGET_RECOVERY_PIXEL_FORMAT := "BGR_565"
 TARGET_PREBUILT_KERNEL := device/htc/supersonic/kernel
-TW_CHARGING_LED_PATH := /sys/class/leds/amber/brightness
-TW_CHARGED_LED_PATH := /sys/class/leds/green/brightness
+TW_HTC_LED := true
 
 BOARD_CUSTOM_BOOTIMG_MK := device/htc/supersonic/custombootimg.mk
