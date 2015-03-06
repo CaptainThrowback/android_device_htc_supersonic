@@ -1,0 +1,5 @@
+on boot
+    start chargeled
+
+service chargeled /sbin/chargeled
+    disabled

@@ -25,20 +25,25 @@
 # against the traditional rules of inheritance).
 USE_CAMERA_STUB := true
 
-# inherit from the proprietary version
--include vendor/htc/supersonic/BoardConfigVendor.mk
-# inherit common defines for all qsd8k devices
-include device/htc/qsd8k-common/BoardConfigCommon.mk
+# Arm (v7a) w/ neon
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_VARIANT := scorpion
 
 TARGET_BOOTLOADER_BOARD_NAME := supersonic
 
-BOARD_KERNEL_CMDLINE := no_console_suspend=1
+# Kernel
+BOARD_KERNEL_CMDLINE := no_console_suspend=1 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x20000000
 BOARD_KERNEL_NEW_PPPOX := true
+TARGET_PREBUILT_KERNEL := device/htc/supersonic/kernel
 
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := supersonic
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
 
+# USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun%d/file
 
 # # cat /proc/mtd
@@ -57,12 +62,13 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 448397312
 
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-#TARGET_KERNEL_CONFIG    := evervolv_supersonic_defconfig
-
 # TWRP specific build flags
 DEVICE_RESOLUTION := 480x800
 TARGET_RECOVERY_PIXEL_FORMAT := "BGR_565"
-TARGET_PREBUILT_KERNEL := device/htc/supersonic/kernel
-TW_BATTERY_LED := htc-legacy
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_NO_SCREEN_BLANK := true
+TW_EXCLUDE_ENCRYPTED_BACKUPS := true
+TW_EXCLUDE_MTP := true
+TW_NO_CPU_TEMP := true
 
 BOARD_CUSTOM_BOOTIMG_MK := device/htc/supersonic/custombootimg.mk

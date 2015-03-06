@@ -27,9 +27,17 @@ PRODUCT_COPY_FILES += \
     device/htc/supersonic/prebuilt/root/init.supersonic.rc:root/init.supersonic.rc \
     device/htc/supersonic/prebuilt/root/init.supersonic.usb.rc:root/init.supersonic.usb.rc \
     device/htc/supersonic/prebuilt/root/ueventd.supersonic.rc:root/ueventd.supersonic.rc \
-    device/htc/supersonic/prebuilt/root/fstab.supersonic:root/fstab.supersonic
+    device/htc/supersonic/prebuilt/root/fstab.supersonic:root/fstab.supersonic \
+    device/htc/supersonic/prebuilt/root/init.recovery.supersonic.rc:root/init.recovery.supersonic.rc
 
 $(call inherit-product-if-exists, vendor/htc/supersonic/supersonic-vendor.mk)
+
+# Recovery
+PRODUCT_PACKAGES += \
+    chargeled
+
+PRODUCT_COPY_FILES += \
+
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.com.google.clientidbase=android-sprint-us \
@@ -39,7 +47,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.setupwizard.enable_bypass=1 \
 	ro.media.dec.jpeg.memcap=20000000 \
 	ro.opengles.version=131072 \
-    ro.telephony.ril.v3=skipdatareg
+	ro.telephony.ril.v3=skipdatareg
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/supersonic/overlay
 
@@ -98,9 +106,6 @@ PRODUCT_COPY_FILES += \
 
 # media profiles and capabilities spec
 $(call inherit-product, device/htc/supersonic/media_a1026.mk)
-
-# Common qsd8k stuff
-$(call inherit-product, device/htc/qsd8k-common/qsd8k.mk)
 
 $(call inherit-product-if-exists, vendor/htc/supersonic/supersonic-vendor.mk)
 
