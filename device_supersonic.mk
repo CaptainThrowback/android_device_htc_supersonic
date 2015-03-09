@@ -28,7 +28,8 @@ PRODUCT_COPY_FILES += \
     device/htc/supersonic/prebuilt/root/init.supersonic.usb.rc:root/init.supersonic.usb.rc \
     device/htc/supersonic/prebuilt/root/ueventd.supersonic.rc:root/ueventd.supersonic.rc \
     device/htc/supersonic/prebuilt/root/fstab.supersonic:root/fstab.supersonic \
-    device/htc/supersonic/prebuilt/root/init.recovery.supersonic.rc:root/init.recovery.supersonic.rc
+    device/htc/supersonic/prebuilt/root/init.recovery.supersonic.rc:root/init.recovery.supersonic.rc \
+    bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
 
 $(call inherit-product-if-exists, vendor/htc/supersonic/supersonic-vendor.mk)
 
