@@ -70,5 +70,7 @@ TW_NO_SCREEN_BLANK := true
 TW_EXCLUDE_ENCRYPTED_BACKUPS := true
 TW_EXCLUDE_MTP := true
 TW_NO_CPU_TEMP := true
+TW_NO_EXFAT := true
+TW_NO_EXFAT_FUSE := true
 
 BOARD_CUSTOM_BOOTIMG_MK := device/htc/supersonic/custombootimg.mk
