@@ -18,5 +18,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_supersonic.mk \
     $(LOCAL_DIR)/omni_supersonic.mk

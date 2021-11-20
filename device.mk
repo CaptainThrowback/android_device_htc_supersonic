@@ -1,4 +1,4 @@
-# Copyright (C) 2009 The Android Open Source Project
+# Copyright (C) 2020 TeamWin Recovery Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,17 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
-# AndroidBoard.mk is a legacy mechanism to deal with a few
-# edge-cases that can't be managed otherwise. No new rules
-# should be added to this file.
-#
-
-LOCAL_PATH := $(call my-dir)
-
-# Least specific includes go first, so that they can get
-# overridden further down
-include $(CLEAR_VARS)
-
-# include the non-open-source counterpart to this file
--include vendor/htc/supersonic/AndroidBoardVendor.mk
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/embedded.mk)
